@@ -1,6 +1,6 @@
 import re
 from textnode import TextType, TextNode
-from htmlnode import HTMLNode, LeafNode, ParentNode
+from htmlnode import LeafNode
 
 def text_node_to_html_node(text_node):
     if text_node.text_type == TextType.TEXT:
@@ -84,4 +84,15 @@ def split_nodes_link(old_nodes):
         new_nodes.extend(section_nodes)
     return new_nodes
             
-                
+def text_to_textnodes(text):
+    nodes = TextNode(text, TextType.TEXT)
+    
+    return split_nodes_link(
+                split_nodes_image(
+                    split_nodes_delimiter(
+                        split_nodes_delimiter(
+                            split_nodes_delimiter([nodes], 
+                                                        "`", TextType.CODE), 
+                                                            "**", TextType.BOLD), 
+                                                                "_", TextType.ITALIC)))
+    
