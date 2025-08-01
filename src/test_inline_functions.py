@@ -1,7 +1,6 @@
 import unittest
 
 from textnode import TextNode, TextType
-from htmlnode import HTMLNode, LeafNode, ParentNode
 from inline_functions import *
 
 class TestFunctions(unittest.TestCase):
@@ -62,8 +61,7 @@ class TestFunctions(unittest.TestCase):
         expected_nodes = [
             TextNode("This is text with no delimiters", TextType.TEXT)
         ]
-        self.assertEqual(new_nodes, expected_nodes)
-    
+        self.assertEqual(new_nodes, expected_nodes)   
     def test_bold_delimiter(self):
         node = TextNode("This is text with a **bold block** word", TextType.TEXT)
         new_nodes = split_nodes_delimiter([node], "**", TextType.CODE)
@@ -73,7 +71,6 @@ class TestFunctions(unittest.TestCase):
             TextNode(" word", TextType.TEXT)
         ]
         self.assertEqual(new_nodes, expected_nodes)
-    
     def test_italic_delimiter(self):
         node = TextNode("This is *text* with *italic* delimiters", TextType.TEXT)
         new_nodes = split_nodes_delimiter([node], "*", TextType.ITALIC) 
@@ -84,8 +81,7 @@ class TestFunctions(unittest.TestCase):
             TextNode("italic", TextType.ITALIC),
             TextNode(" delimiters", TextType.TEXT)
         ]
-        self.assertEqual(new_nodes, expected_nodes)
-    
+        self.assertEqual(new_nodes, expected_nodes) 
     def test_multi_delimiters(self):
         node = TextNode("This _is_ some *text* with **multiple** delimiters for `verification`", TextType.TEXT)
         new_nodes = split_nodes_delimiter([node], "`", TextType.CODE)
@@ -113,7 +109,6 @@ class TestFunctions(unittest.TestCase):
         )
         self.assertEqual(result, expected)
         self.assertListEqual([("image", "https://i.imgur.com/zjjcJKZ.png")], matches)
-    
     def test_extract_markdown_links(self):
         raw_text = "this is text with a link [to boot dev](https://www.boot.dev) and [to youtube](https://www.youtube.com/@bootdotdev)"
         result = extract_markdown_links(raw_text)
