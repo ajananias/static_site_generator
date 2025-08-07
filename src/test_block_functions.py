@@ -166,3 +166,5 @@ This is a regular markdown paragraph block.
         self.assertEqual(block_to_block_type(blocks[4]), BlockType.UNORDERED_LIST)
         self.assertEqual(block_to_block_type(blocks[5]), BlockType.ORDERED_LIST)
 
+if __name__ == "__main__":
+    unittest.main()
