@@ -81,7 +81,17 @@ the **same** even with inline stuff
             html,
             "<div><h2>Several spaces in heading</h2></div>"
         )
-
+    def test_unordered_list(self):
+        md = """
+- First item
+- Second item
+"""
+        node = markdown_to_html_node(md)
+        html = node.to_html()
+        self.assertEqual(
+            html,
+            "<div><ul><li>First item</li><li>Second item</li></ul></div>"
+        )
 
 if __name__ == "__main__":
     unittest.main()

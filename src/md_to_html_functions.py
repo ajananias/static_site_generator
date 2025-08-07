@@ -63,10 +63,12 @@ def quote_to_html_node(block):
     return ParentNode("blockquote", children=quote_nodes)
 def unordered_list_to_html_node(block):
     items = block.split("\n")
+    stripped_items = []
     for item in items:
         if item.startswith("- "):
             item = item[2:]
-    children_item_nodes = [text_to_children(item) for item in items]
+            stripped_items.append(item)
+    children_item_nodes = [text_to_children(item) for item in stripped_items]
     item_nodes = [ParentNode("li", children=children_item_node) for children_item_node in children_item_nodes]
     return ParentNode("ul", children=item_nodes)
 def ordered_list_to_html_node(block):
