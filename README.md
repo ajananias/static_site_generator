@@ -4,4 +4,4 @@ Another [Boot.dev](https://boot.dev) project. This time I have built a static si
 
 ### Example Static Website
 
-Check the example site at [Tolkien Fan Club](https://ajananias.github.io/static_site_generator/s).
+Check the example site at [Tolkien Fan Club](https://ajananias.github.io/static_site_generator/).
